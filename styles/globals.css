@@ -1,8 +1,20 @@
+@font-face {
+  font-family: 'ExampleFont';
+  src: url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  /* Add other font properties here if needed */
+}
+
+body {
+  font-family: 'ExampleFont', sans-serif;
+  font-size: 12px;
+  /* Additional styling rules */
+}
 body{
     width: device-width;
     height: device-height;
     display: flex;
     flex-direction: column;
+    margin: 0px;
     
   }
   .map-container{
@@ -32,6 +44,24 @@ body{
   
   
   }
+  .spacer {
+    height: 12px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .spacer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left:6.5px;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background-color: black;
+  }
+   
   
   .driverAndVehicle_details-container
   {
@@ -39,17 +69,145 @@ body{
     flex-direction: row;
     justify-content: space-between;
   }
-  .driver_image{
+  .driver_image img{
     width: 50px;
     height: 50px;
-    border-radius:50%;
+    border-radius: 50%;
     overflow: hidden;
-    object-fit: cover;
+    margin-right: 0px;
+    padding: 0; 
+    position: relative; /* Add position: relative to establish stacking context */
+    z-index: 2;
+    
   }
-  .left
+  
+  .origin-container{
+    padding: 1px;
+    }
+    .destination-container{
+      padding:1px;
+    }
+    
+    .origin-container::before,
+.destination-container::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  
+  margin-right: 5px;
+}
+.origin-container::before{
+  background-color:  #04825C;
+}
+.destination-container::before {
+  background-color:red;
+}
+.spacer{
+  height:10px;
+}
+
+.driverAndVehicle_details-container{
+margin-top: 15px;
+margin-bottom:5px;
+display:flex;
+flex-direction: row;
+justify-content: space-between ;
+}
+
+ .left-container {
+    display: flex;
+   flex-direction:row;
+  }
+  .rating{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .right
+  { 
+    flex:1;
+  }
+  .divider{
+    margin-top: 5px;
+    border-top: solid #D3D6D5 0.2px;
+    padding :10px;
+  }
+  #divider-below-route_details-conainer
   {
+    display: none;
+  }
+  .right-container{
+   display: flex;
+   flex-direction: column;
   
   }
+  .driver_name{
+    background: #04825C;
+    font-size: 16px;
+    margin-left:-171px;
+    text-align: end;
+    z-index: 1; /* Add z-index to position it above the driver image */
+    position: relative;
+    border-radius: 5%;
+    padding:3px;
+    color:white;
+    font-weight: bolder;
+  }
+  .vehicle_info
+  {text-align: end;
+
+  }
+  .vehicle_number{
+   font-weight: bold;
+  }
+.call_action-container
+{
+  display: flex;
+  justify-content: space-between;
+
+}
+.call_text{
+  font-weight: bold;
+}
+.call_Icon{
+  border: 1px;
+  padding:3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.rating_value{
+  padding-right: 3px;
+}
+
+@media (max-width: 767px)
+{
+  .card-container{
+    position: relative;
+    top:unset;
+    right: unset;
+  margin:auto;
+  
+    
+  }
+  .map-container{
+    flex:0.5;
+  }
+  
+  #divider-below-route_details-conainer
+  {
+    display: unset;
+  }
+ 
+  body{
+margin:0px;
+display: flex;
+flex-direction: column;
+
+  }
+}
+
   /*.container {
     position: absolute;
     top: 20px;
